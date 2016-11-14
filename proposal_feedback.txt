@@ -1,0 +1,15 @@
+I personally like user interface shown in the sketch!
+
+Your plan is clear to me. If you have an working version of the game ready to be ported, great! If not, I would suggest you start with user’s basic functionalities first:
+
+1. Register, log in / out
+2. Edit their profiles
+3. Click on a user and view his / her detail
+
+Then think out whether implementing admin is more important to the web app or implementing interacting with patterns and game play is more important. Choose one, do not start with both at the same time.
+
+One more thing. The first few sketches are for mobile, while the last 2 are for desktop. They are neither inclusive nor inclusive (for example admin homepage is not shown in mobile user interfaces). Although it’s super great that your web app is responsive, I would suggest you start with one targeting platform if you are not THAT experienced.
+
+Overall, the plan is good!
+
+- Shen
