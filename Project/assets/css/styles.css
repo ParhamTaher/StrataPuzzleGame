@@ -1,0 +1,175 @@
+* {
+	box-sizing: border-box;
+}
+html > body { 
+	margin: 0; 
+	background-color: #D5CEBC; 
+	color: #968A72;
+	font-family: arial, sans-serif;
+	width: 100%;
+	overflow: hidden;
+}
+
+.disabled { display: none !important; }
+.hidden {opacity: 0; transition: 0.2s }
+
+/* Colours */
+/*.primary {background-color: #968A72; }
+.second  {background-color: #D5CEBC; }*/
+.red    {background-color: #c63d44; } 
+.orange {background-color: #e1752d; } 
+.yellow {background-color: #f29f29; } 
+.green  {background-color: #95a523; } 
+.cyan   {background-color: #3e9898; } 
+.blue   {background-color: #413D80; } 
+.violet {background-color: #782277; }
+.white  {background-color: #fafafa; }
+.grey   {background-color: #888; }
+.black  {background-color: #333; }
+
+/* Board Sizes */
+.board-2  { width: 26vw; height: 26vw; max-width: 180px; max-height: 180px; }
+.board-3  { width: 33vw; height: 33vw; max-width: 220px; max-height: 220px; }
+.board-4  { width: 39vw; height: 39vw; max-width: 260px; max-height: 260px; }
+.board-5  { width: 45vw; height: 45vw; max-width: 300px; max-height: 300px; }
+.board-6  { width: 50vw; height: 50vw; max-width: 335px; max-height: 335px; }
+.board-7  { width: 55vw; height: 55vw; max-width: 370px; max-height: 370px; }
+.board-8  { width: 59vw; height: 59vw; max-width: 400px; max-height: 400px; }
+.board-9  { width: 63vw; height: 63vw; max-width: 430px; max-height: 430px; }
+.board-10 { width: 66vw; height: 66vw; max-width: 460px; max-height: 460px; }
+
+/* Cell sizes */
+/* Due to multiple browser issues, this is the best workaround */
+.cell-2  { width: 50%;    height: 50%;    }
+.cell-3  { width: 33.33%; height: 33.33%; }
+.cell-4  { width: 25%;    height: 25%;    }
+.cell-5  { width: 20%;    height: 20%;    }
+.cell-6  { width: 16.67%; height: 16.67%; }
+.cell-7  { width: 14.28%; height: 14.28%; }
+.cell-8  { width: 12.5%;  height: 12.5%;  }
+.cell-9  { width: 11.11%; height: 11.11%; }
+.cell-10 { width: 10%;    height: 10%;    }
+
+/* Animations */
+.anim,
+#colours > span,
+span.insert::after,
+div.ribbon { transition: transform 0.3s, width 0.6s; }
+
+
+#board {
+    margin: auto;
+    margin-top: 15vw;
+    margin-bottom: 15vw;
+    transform: rotate(-45deg);
+    border: 4px solid #968A72;
+    position: relative;
+}
+
+
+#pattern, .ribbons {
+	width: 100%;
+	height: 100%;
+	border-collapse: collapse;
+	font-size: 0;
+	padding: 4px;
+}
+
+	#pattern > div {
+		display: inline-block;
+		padding: 2px;
+		border: 2px solid #D5CEBC;
+	}
+
+	.ribbons {
+		top: 0;
+		position: absolute;
+		z-index: 0;
+		overflow: visible;
+	}
+
+
+.ribbons > div { 
+	position: relative;
+	display: block; 
+}
+
+	.right {
+		display: inline-block !important;
+		transform: translateY(-100%) rotate(90deg) scale(-1, 1);
+	}
+
+
+span.insert {
+	cursor: pointer;
+	display: block;
+	height: 100%;
+	width: 40px;
+	transform: translateX(-150%);
+}
+
+	span.insert::after {
+		display: block;
+		content: '';
+		border: 16px solid #968A72;
+		border-top-color: transparent;
+		border-right-color: transparent;
+		border-bottom-color: transparent;
+		position: absolute;
+		top: 50%;
+		transform: translate(40%, -50%);
+	}
+	span.insert:hover::after {
+		transform: translate(60%, -50%);
+	}
+
+
+div.ribbon {
+	height: 54%;
+	width: 0;
+	position: absolute;
+	top: 50%;
+	transform: skew(-45deg) translate(-80px, -50%);
+	box-shadow: 0 0 10px 0 #333;
+}
+
+	div.ribbon-on { width: 100vw; }
+
+
+h3 { text-align: center; }
+
+
+#colours {
+	text-align: center;
+	font-size: 0;
+	height: 100px;
+	padding-top: 50px;
+	overflow: hidden;
+}
+
+	#colours > span {
+		display: inline-block;
+		margin: 2px;
+		cursor: pointer;
+		width: 6.5vw;
+		max-width: 52px;
+		height: 100px;
+		box-shadow: 0 0 5px 0 transparent;
+	}
+	#colours > span:hover { 
+		transform: translateY(-2.5vw) skew(0, 45deg);
+		box-shadow: 0 0 5px 0 #333;
+	}
+	.colour-on { transform: translateY(-2.5vw) skew(0, -45deg) !important; }
+
+
+#buttons {text-align: center; }
+
+	#buttons > img {
+		width: 20vw;
+		max-width: 80px;
+		cursor: pointer;
+		transition: opacity 0.3s;
+	}
+
+	#buttons > img:hover { opacity: 0.7; }
