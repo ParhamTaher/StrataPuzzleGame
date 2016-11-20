@@ -1,8 +1,26 @@
 {
-    "name": "ta-app",
-    "main": "tapp.js",
-    "dependencies": {
-        "express": "^4.14.0",
+  "name": "strata-nobeginningmiddleend",
+  "version": "0.2.5",
+  "description": "Ribbon matching game with community platform",
+  "engines": {
+    "node": "5.9.1"
+  },
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.14.0",
         "body-parser": "~1.0.1"
-    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CSC309-Fall-2016/NoBeginningMiddleEnd.git"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
 }
