@@ -1,0 +1,8 @@
+{
+  "name": "Strata Game",
+  "description": "Ribbon matching game with community platform",
+  "repository": "https://github.com/CSC309-Fall-2016/NoBeginningMiddleEnd.git",
+  "logo": "http://node-js-sample.herokuapp.com/node.svg",
+  "keywords": ["node", "express", "static"],
+  "image": "heroku/nodejs"
+}
