@@ -1,0 +1,8 @@
+{
+    "name": "ta-app",
+    "main": "tapp.js",
+    "dependencies": {
+        "express": "^4.14.0",
+        "body-parser": "~1.0.1"
+    }
+}
