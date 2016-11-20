@@ -7,7 +7,6 @@ html > body {
 	color: #968A72;
 	font-family: arial, sans-serif;
 	width: 100%;
-	overflow: hidden;
 }
 
 .disabled { display: none !important; }
@@ -56,11 +55,32 @@ html > body {
 span.insert::after,
 div.ribbon { transition: transform 0.3s, width 0.6s; }
 
+.noti {
+    transition: height 2s;
+    color: white;
+    overflow: hidden;
+    transition: 0.3s;
+    height: 0;
+}
+	.noti > span {
+    	padding: 10px;
+    	font-size: 18px;
+    	display: block;
+	}
+
+#board-container {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	min-height: 600px;
+}
 
 #board {
+	position: absolute;
     margin: auto;
-    margin-top: 15vw;
-    margin-bottom: 15vw;
+    top: 25%;
     transform: rotate(-45deg);
     border: 4px solid #968A72;
     position: relative;
@@ -136,8 +156,13 @@ div.ribbon {
 	div.ribbon-on { width: 100vw; }
 
 
-h3 { text-align: center; }
+#lower {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
 
+h3 { text-align: center; }
 
 #colours {
 	text-align: center;
@@ -157,10 +182,10 @@ h3 { text-align: center; }
 		box-shadow: 0 0 5px 0 transparent;
 	}
 	#colours > span:hover { 
-		transform: translateY(-2.5vw) skew(0, 45deg);
+		transform: translateY(-20px) skew(0, 45deg);
 		box-shadow: 0 0 5px 0 #333;
 	}
-	.colour-on { transform: translateY(-2.5vw) skew(0, -45deg) !important; }
+	.colour-on { transform: translateY(-20px) skew(0, -45deg) !important; }
 
 
 #buttons {text-align: center; }
