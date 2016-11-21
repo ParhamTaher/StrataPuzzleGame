@@ -6,16 +6,30 @@
     <title>Strata</title>
     <link rel="stylesheet" href="assets/css/styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/scripts.js"></script>
     <script type="text/javascript" src="assets/js/gameScripts.js"></script>
 </head>
 <body>
+
     <nav>
-        <!-- Menu Place Stub -->
+        <a href="./profile" id="nav-profile">
+            <img id="nav-avatar" src="assets/img/avatar.png">
+            <div id="nav-pbrief">
+                <span>Username</span><br>
+                <span class= "verbose">Verbose</span>
+                <span class="more">More ...</span>
+            </div>
+        </a>
+        <a href="./community"><img src="./assets/img/community.png"><span>Community</span></a>
+        <a href="./single"><img src="./assets/img/single.png"><span>Single</span></a>
+        <a href="./create"><img src="./assets/img/create.png"><span>Create</span></a>
+        <a href="./about"><img src="./assets/img/about.png"><span>About</span></a>
     </nav>
     <section id="header">
-        <img src="./assets/img/back.png" onclick="back()" alt="Back">
-        <img src="./assets/img/menu.png" onclick="toggleMenu()" alt="Menu">
+        <img id="back" src="./assets/img/back.png" alt="Back">
+        <img id="menu" src="./assets/img/menu.png" alt="Menu">
     </section>
+
     <section id="board-container">
         <div id="board" class="board-2">
             <div id="pattern"></div>
