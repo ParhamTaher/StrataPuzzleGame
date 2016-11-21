@@ -78,6 +78,7 @@ nav {
 	transform: translateX(-102%);
 	border-right: 4px solid #968A72;
 	min-height: 600px;
+	background-color: #D5CEBC;;
 }
 
 	.nav-on { transform: none; }
@@ -96,11 +97,26 @@ nav > a {
 	.nava-on,
 	nav > a:hover { background-color: #968A72; color:white; }
 
-	nav img {
+	nav img,
+	#community-btn>div,
+	#single-btn>div,
+	#create-btn>div,
+	#about-btn>div {
 		height: 80px;
 		width: 80px;
 		vertical-align: middle;
+		display: inline-block;
+		background-size: contain;
 	}
+		#community-btn>div { background-image: url("../img/community.png"); }
+		#single-btn>div { background-image: url("../img/single.png"); }
+		#create-btn>div { background-image: url("../img/create.png"); }
+		#about-btn>div { background-image: url("../img/about.png"); }
+		#community-btn:hover>div { background-image: url("../img/community_w.png"); }
+		#single-btn:hover>div { background-image: url("../img/single_w.png"); }
+		#create-btn:hover>div { background-image: url("../img/create_w.png"); }
+		#about-btn:hover>div { background-image: url("../img/about_w.png"); }
+
 	nav span {
 		font-size: 22px;
 		vertical-align: middle;
@@ -236,16 +252,18 @@ div.ribbon {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
+	text-align: center;
 }
 
 h3 { text-align: center; }
 
 #colours {
-	text-align: center;
 	font-size: 0;
-	height: 100px;
-	padding-top: 50px;
+	height: 110px;
 	overflow: hidden;
+	display: inline-block;
+	padding: 0 30px;
+	padding-top: 55px;
 }
 
 	#colours > span {
@@ -264,15 +282,14 @@ h3 { text-align: center; }
 	.colour-on { transform: translateY(-20px) skew(0, -45deg) !important; }
 
 
-#buttons {text-align: center; }
-
-	#buttons > img,
-	#header > img {
-		width: 20vw;
-		max-width: 80px;
-		cursor: pointer;
-		transition: opacity 0.3s;
-	}
+#buttons > img,
+#header > img {
+	width: 20vw;
+	max-width: 80px;
+	cursor: pointer;
+	transition: opacity 0.3s;
+	margin: 0 20px;
+}
 
 	#buttons > img:hover,
 	#header > img:hover { opacity: 0.7; }
