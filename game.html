@@ -6,16 +6,30 @@
     <title>Strata</title>
     <link rel="stylesheet" href="assets/css/styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/scripts.js"></script>
     <script type="text/javascript" src="assets/js/gameScripts.js"></script>
 </head>
 <body>
+
     <nav>
-        <!-- Menu Place Stub -->
+        <a href="./profile" id="nav-profile">
+            <img id="nav-avatar" src="assets/img/avatar.png">
+            <div id="nav-pbrief">
+                <span>Username</span><br>
+                <span class= "verbose">Verbose</span>
+                <span class="more">More ...</span>
+            </div>
+        </a>
+        <a href="./community" id="community-btn"><div></div><span>Community</span></a>
+        <a href="./single" id="single-btn"><div></div><span>Single</span></a>
+        <a href="./create" id="create-btn"><div></div><span>Create</span></a>
+        <a href="./about" id="about-btn"><div></div><span>About</span></a>
     </nav>
     <section id="header">
-        <img src="./assets/img/back.png" onclick="back()" alt="Back">
-        <img src="./assets/img/menu.png" onclick="toggleMenu()" alt="Menu">
+        <img id="back" src="./assets/img/back.png" title="Back">
+        <img id="menu" src="./assets/img/menu.png" title="Menu">
     </section>
+
     <section id="board-container">
         <div id="board" class="board-2">
             <div id="pattern"></div>
@@ -26,9 +40,9 @@
             <div id="colours"></div>
             <div id="buttons">
                 <strong style="cursor:pointer" onclick="build(['red', 'red', 'green', 'orange'])">Click Me To Build A Sample</strong><br><br><br><!-- Remove this line before release -->
-                <img src="./assets/img/restart.png" onclick="restart()" alt="Restart">
-                <img src="./assets/img/cancel.png" onclick="undo()" alt="Undo">
-                <img src="./assets/img/share.png" onclick="share()" alt="Share">
+                <img src="./assets/img/restart.png" onclick="restart()" title="Restart">
+                <img src="./assets/img/cancel.png" onclick="undo()" title="Undo">
+                <img src="./assets/img/share.png" onclick="share()" title="Share">
             </div>
         </div>
     </section>
