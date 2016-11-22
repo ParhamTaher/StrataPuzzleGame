@@ -2,7 +2,7 @@
 
 First Planning Meeting:
 
-Agreed on the data format. (Database)
+Agreed on the data format. (Database built in MySQL)
 
 Pattern: {`PID: int`, Name:String, Author: String, EntryNumber:int, Color:String}
 
@@ -12,3 +12,14 @@ Pattern: {`PID: int`, Name:String, Author: String, EntryNumber:int, Color:String
 
 User: {`Username: String`, Password: String, Description: String, Patterns: [PID]}
 
+Update: 
+
+MySQL does not handle array well like JSON, changes are made to cater the need of many-to-many relation in this application.
+
+Pattern: {`PID: int`, Name:String, Author: String}
+
+Solution: {PID: int, EntryNumber: int, Color: String}	    
+
+User: {`Username: String`, Password: String, Description: String}
+
+UserPattern: {Username: String, PID: int}
