@@ -9,6 +9,16 @@ function insert(who, idx) {
 	$(who).next().attr("class","ribbon "+ccolour).addClass("ribbon-on");
 	$(who).parent().css("z-index",layers);
 
+	if (idx >= side) {  // Update column
+		for (let i=0;i<side**2;i++) {
+			if (i % side == idx-side) state[i].unshift(ccolour);
+		}
+	} else {  // Update row
+		for (let i=0;i<side**2;i++) {
+			if (Math.floor(i / side) == idx) state[i].unshift(ccolour);
+		}
+	}
+
 	numActions ++;
 	$("#steps").html(''+numActions);
 	console.log("Insert "+ccolour+" ribbon at "+idx);
@@ -29,6 +39,8 @@ function colour(who) {
 function restart() {
 	actions = [];
 	numActions = 0;
+	state = [];
+	for (let i=0;i<side**2;i++) { state.push([]); }
 	$("#steps").html('0');
 	layers = 0;
 	console.log("Restart");
@@ -39,6 +51,9 @@ function restart() {
 	$("#colours span").each(function(){
 		$(this).removeClass("colour-on");
 	});
+
+	$("#congrats").addClass('disabled');
+	$("#lower-mask").addClass('disabled');
 }
 
 function undo() {
@@ -47,18 +62,32 @@ function undo() {
 	$insert = $($("#board span.insert")[parseInt(idx)]);
 	$insert.removeClass("disabled").next().removeClass('ribbon-on');
 
+	if (idx >= side) {  // Update column
+		for (let i=0;i<side**2;i++) {
+			if (i % side == idx-side) state[i].pop();
+		}
+	} else {  // Update row
+		for (let i=0;i<side**2;i++) {
+			if (Math.floor(i / side) == idx) state[i].pop();
+		}
+	}
+
 	layers --;
 	console.log("Undo "+colour+" ribbon at "+idx);
 }
 
 var board = [];
+var state = [];
+var side = 0;
 function build(clrs) {
 	// Builds the game scene (board, insert btns, colour stripes)
 	// Takes a flattened list of colours. 
 	// e.g. build(['red', 'red', 'green', 'orange'])
-	var side = Math.sqrt(clrs.length);
+	side = Math.sqrt(clrs.length);
 	if (Math.floor(side) != side) return;
 	board = clrs;
+	state = [];
+	for (let i=0;i<side**2;i++) { state.push([]); }
 
 	var used = {};
 	var $ribbons = $(".ribbons");
@@ -92,9 +121,15 @@ function build(clrs) {
 	});
 }
 
+var state = null;
 function check() {
 	// Check the state dictionary/list and compare with board
 	// If match, end game
-	if (layers < board.length) return;
-
+	if (layers < 2*side) return;  // No holes
+	for (let i=0;i<side**2;i++) { // Compare with board
+		if (state[i][0] != board[i]) return;
+	}
+	console.log("Match solution. Game ended");
+	$("#congrats").removeClass('disabled').find("span").html(''+numActions);
+	$("#lower-mask").removeClass('disabled');
 }
