@@ -7,6 +7,8 @@ html > body {
 	color: #968A72;
 	font-family: arial, sans-serif;
 	width: 100%;
+	font-weight: bold;
+	font-size: 20px; 
 }
 
 .disabled { display: none !important; }
@@ -154,9 +156,12 @@ nav > a {
 	position: absolute;
 	z-index: 5;
 	height: 80px;
-	padding: 20px;
+	padding: 20px 0;
 	text-align: center;
 }
+
+	#header img { float: left; }
+	#header img:last-child {float: right;}
 
 
 #board-container {
@@ -248,6 +253,28 @@ div.ribbon {
 	div.ribbon-on { width: 100vw; }
 
 
+#congrats,
+#lower-mask { 
+	background-color: rgba(213, 206, 188, 0.8); /*#D5CEBC*/ 
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+}
+
+	#congrats > div { 
+		position: absolute;
+		text-align: center;
+		width: 100%;
+		top: 30%;
+	 }
+	
+	#congrats img {
+		height: 120px;
+		width: 120px;
+	}
+
+
 #lower {
 	position: absolute;
 	bottom: 0;
@@ -281,6 +308,10 @@ h3 { text-align: center; }
 	}
 	.colour-on { transform: translateY(-20px) skew(0, -45deg) !important; }
 
+	#buttons {
+	    z-index: 1;
+	    position: relative;
+	}
 
 #buttons > img,
 #header > img {
@@ -288,7 +319,7 @@ h3 { text-align: center; }
 	max-width: 80px;
 	cursor: pointer;
 	transition: opacity 0.3s;
-	margin: 0 20px;
+	margin: 0 5vw;
 }
 
 	#buttons > img:hover,

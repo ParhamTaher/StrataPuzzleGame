@@ -35,9 +35,16 @@
             <div id="pattern"></div>
             <div class="ribbons"></div>
         </div>
+        <div id="congrats" class="disabled">
+            <div>
+                <img src="./assets/img/check.png">
+                <p>Congratulations! <br>You finished in <span>0</span> steps</p>
+            </div>
+        </div>
         <div id="lower">
             <h3>Steps: <span id="steps">0</span></h3>
             <div id="colours"></div>
+            <div id="lower-mask" class="disabled"></div>
             <div id="buttons">
                 <strong style="cursor:pointer" onclick="build(['red', 'red', 'green', 'orange'])">Click Me To Build A Sample</strong><br><br><br><!-- Remove this line before release -->
                 <img src="./assets/img/restart.png" onclick="restart()" title="Restart">

@@ -16,7 +16,7 @@ function login(){
 
     $.post({
         url: "/login",
-        dataType: "text/plain",
+        dataType: "json",
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify( { username: $un, password: $pw } ),
         success: function(r) {
@@ -64,7 +64,7 @@ function register() {
 
     $.post({
         url: "/register",
-        dataType: "text/plain",
+        dataType: "json",
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify( {	username: $un, password: $pw } ),
         success: function(r) {
