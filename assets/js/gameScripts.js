@@ -134,3 +134,39 @@ function check() {
 	$("#congrats").removeClass('disabled').find("span").html(''+numActions);
 	$("#lower-mask").removeClass('disabled');
 }
+
+var level = 1;
+const levelStr = ['Easy', 'Normal', 'Hard', 'Expert'];
+function levelDiff(amount) {
+	if (level+amount > 4 || level+amount<1) return;
+	level += amount;
+	$("#level-dialog").find(".spinner").find("span").html(levelStr[level-1]);
+}
+
+var levels = null;
+$( document ).ready(function() {
+	superInit();
+	// $.get('levels.json', function(data) {
+	// 	levels = JSON.parse(data);
+	// });
+	levels = {
+		1.1:["yellow", "yellow", "yellow", "yellow"],
+		1.2:["blue", "blue", "cyan", "cyan"],
+		1.3:["red", "red", "green", "orange"],
+		1.4:["cyan", "violet", "cyan", "cyan"],
+		1.5:["red", "red", "green", "orange"],
+		1.6:["cyan", "violet", "cyan", "cyan"],
+		1.7:["cyan", "violet", "cyan", "violet", "violet", "violet", "cyan", "violet", "cyan"],
+		1.8:["orange", "cyan", "orange", "green", "cyan", "yellow", "yellow", "cyan", "yellow"],
+		1.9:["cyan", "cyan", "blue", "violet", "violet", "violet", "cyan", "violet", "blue"],
+		2.1:["white", "grey", "black", "grey", "grey", "black", "black", "black", "black"],
+		3.1:["orange", "orange", "green", "red", "yellow", "orange", "green", "red", "green", "green", "green", "red", "yellow", "yellow", "green", "yellow"],
+		4.1:["cyan", "blue", "blue", "violet", "blue", "cyan", "cyan", "blue", "cyan", "cyan", "cyan", "cyan", "violet", "blue", "violet", "violet", "blue", "violet", "cyan", "blue", "blue", "violet", "blue", "cyan", "blue", "blue", "blue", "blue", "blue", "blue", "violet", "violet", "violet", "violet", "violet", "violet"]
+	}
+});
+
+function enterLevel(second) {
+	$("#dialogs").addClass("disabled");
+	$("#lower").removeClass("disabled");
+	build(levels[level+'.'+second]);
+}

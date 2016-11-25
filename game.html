@@ -31,7 +31,7 @@
     </section>
 
     <section id="board-container">
-        <div id="board" class="board-2">
+        <div id="board">
             <div id="pattern"></div>
             <div class="ribbons"></div>
         </div>
@@ -41,12 +41,33 @@
                 <p>Congratulations! <br>You finished in <span>0</span> steps</p>
             </div>
         </div>
-        <div id="lower">
+        <div id="dialogs">
+            <div id="level-dialog">
+                <p>Select Level</p>
+                <div id="levels" class="board-3">
+                    <div class="cell-3" onclick="enterLevel(1)">1</div>
+                    <div class="cell-3" onclick="enterLevel(2)">2</div>
+                    <div class="cell-3" onclick="enterLevel(3)">3</div>
+                    <div class="cell-3" onclick="enterLevel(4)">4</div>
+                    <div class="cell-3" onclick="enterLevel(5)">5</div>
+                    <div class="cell-3" onclick="enterLevel(6)">6</div>
+                    <div class="cell-3" onclick="enterLevel(7)">7</div>
+                    <div class="cell-3" onclick="enterLevel(8)">8</div>
+                    <div class="cell-3" onclick="enterLevel(9)">9</div>
+                </div>
+                <div class="spinner">
+                    <img onclick="levelDiff(-1)" src="./assets/img/arrow.png">
+                    <span>Easy</span>
+                    <img onclick="levelDiff(1)" src="./assets/img/arrow.png">
+                </div>
+            </div>
+            
+        </div>
+        <div id="lower" class='disabled'>
             <h3>Steps: <span id="steps">0</span></h3>
             <div id="colours"></div>
             <div id="lower-mask" class="disabled"></div>
             <div id="buttons">
-                <strong style="cursor:pointer" onclick="build(['red', 'red', 'green', 'orange'])">Click Me To Build A Sample</strong><br><br><br><!-- Remove this line before release -->
                 <img src="./assets/img/restart.png" onclick="restart()" title="Restart">
                 <img src="./assets/img/cancel.png" onclick="undo()" title="Undo">
                 <img src="./assets/img/share.png" onclick="share()" title="Share">
