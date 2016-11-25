@@ -1,5 +1,6 @@
 * {
 	box-sizing: border-box;
+	-webkit-backface-visibility: hidden;
 }
 html > body { 
 	margin: 0; 
@@ -12,7 +13,8 @@ html > body {
 }
 
 .disabled { display: none !important; }
-.hidden {opacity: 0; transition: 0.2s }
+.hidden {opacity: 0; }
+.fade {opacity: 0.3; }
 
 /* Colours */
 /*.primary {background-color: #968A72; }
@@ -55,7 +57,9 @@ html > body {
 .anim,
 #colours > span,
 span.insert::after,
-nav, nav>a, nav>div { transition: 0.3s; }
+nav, nav>a, nav>div,
+.ribbons, 
+#size-dialog>img { transition: 0.3s; }
 
 .noti {
     transition: height 2s;
@@ -174,12 +178,11 @@ nav > a {
 }
 
 #board {
-	position: absolute;
-    margin: auto;
-    top: 25%;
-    transform: rotate(-45deg);
+    position: absolute;
     border: 4px solid #968A72;
-    position: relative;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    top: 40%;
+    left: 50%;
 }
 
 
@@ -189,6 +192,7 @@ nav > a {
 	border-collapse: collapse;
 	font-size: 0;
 	padding: 4px;
+    position: relative;
 }
 
 	#pattern > div {
@@ -254,7 +258,8 @@ div.ribbon {
 
 
 #congrats,
-#lower-mask { 
+#lower-mask,
+#dialogs { 
 	background-color: rgba(213, 206, 188, 0.8); /*#D5CEBC*/ 
 	position: absolute;
 	width: 100%;
@@ -274,6 +279,48 @@ div.ribbon {
 		width: 120px;
 	}
 
+	#size-dialog,
+	#name-dialog { 
+		text-align: center; 
+		font-size: 30px; 
+	}
+
+	#size-dialog {
+		position: absolute;
+		top: 40%;
+		left: 50%;
+		width: 100%;
+		transform: translate(-50%, -50%);
+	}
+
+	#size-dialog > img {
+		height: 50px;
+		vertical-align: middle;
+		cursor: pointer;
+	}
+
+	#size-dialog > img:hover { opacity: 0.7; }
+	#size-dialog > img:nth-child(4) { transform: scale(-1 ,1); }
+	#size-dialog > img:last-child {
+		width: 120px;
+		height: 120px;
+	}
+
+	#size-dialog > div {
+		border: 4px solid #968A72;
+		transform: rotate(-45deg);
+	}
+
+	#name-dialog > input {
+		background-color: transparent;
+	    border: none;
+	    border-bottom: 4px solid #968a72;
+	    color: #968a72;
+	    font-size: 32px;
+	    text-align: center;
+    	margin-bottom: 30px;
+	}
+
 
 #lower {
 	position: absolute;
@@ -289,8 +336,8 @@ h3 { text-align: center; }
 	height: 110px;
 	overflow: hidden;
 	display: inline-block;
-	padding: 0 30px;
 	padding-top: 55px;
+    margin-bottom: 30px;
 }
 
 	#colours > span {

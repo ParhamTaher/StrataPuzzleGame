@@ -64,11 +64,11 @@ function undo() {
 
 	if (idx >= side) {  // Update column
 		for (let i=0;i<side**2;i++) {
-			if (i % side == idx-side) state[i].pop();
+			if (i % side == idx-side) state[i].shift();
 		}
 	} else {  // Update row
 		for (let i=0;i<side**2;i++) {
-			if (Math.floor(i / side) == idx) state[i].pop();
+			if (Math.floor(i / side) == idx) state[i].shift();
 		}
 	}
 
@@ -87,6 +87,7 @@ function build(clrs) {
 	if (Math.floor(side) != side) return;
 	board = clrs;
 	state = [];
+	$("#board").attr("class", "board-"+side);
 	for (let i=0;i<side**2;i++) { state.push([]); }
 
 	var used = {};
