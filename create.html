@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Strata | Game</title>
+    <title>Strata | Create</title>
     <link rel="stylesheet" href="assets/css/styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="assets/js/scripts.js"></script>
-    <script type="text/javascript" src="assets/js/gameScripts.js"></script>
+    <script type="text/javascript" src="assets/js/createScripts.js"></script>
 </head>
 <body>
 
@@ -31,25 +31,34 @@
     </section>
 
     <section id="board-container">
-        <div id="board" class="board-2">
-            <div id="pattern"></div>
+        <div id="board">
             <div class="ribbons"></div>
+            <div id="pattern" class="disabled"></div>
         </div>
-        <div id="congrats" class="disabled">
-            <div>
-                <img src="./assets/img/check.png">
-                <p>Congratulations! <br>You finished in <span>0</span> steps</p>
+
+        <div id="dialogs">
+            <div id="size-dialog">
+                <p>Select Board Size</p>
+                <img onclick="sizePattern(-1)" src="./assets/img/arrow.png">
+                <span>2 x 2</span>
+                <img onclick="sizePattern(1)" src="./assets/img/arrow.png"><br><br>
+                <img src="./assets/img/check.png" onclick="build()">
             </div>
         </div>
-        <div id="lower">
-            <h3>Steps: <span id="steps">0</span></h3>
+
+        <div id="lower" class="disabled">
+            <div id="name-dialog" class="disabled">
+                <p>Name Your Pattern</p>
+                <input type="text" name="pattern-name">
+            </div>
             <div id="colours"></div>
-            <div id="lower-mask" class="disabled"></div>
             <div id="buttons">
-                <strong style="cursor:pointer" onclick="build(['red', 'red', 'green', 'orange'])">Click Me To Build A Sample</strong><br><br><br><!-- Remove this line before release -->
                 <img src="./assets/img/restart.png" onclick="restart()" title="Restart">
                 <img src="./assets/img/cancel.png" onclick="undo()" title="Undo">
-                <img src="./assets/img/share.png" onclick="share()" title="Share">
+                <img src="./assets/img/check.png" onclick="completed()" title="Complete">
+                <img src="./assets/img/share.png" onclick="share()" title="Share" class="disabled">
+                <img src="./assets/img/upload.png" onclick="upload()" title="Upload" class="disabled">
+                <img src="./assets/img/edit.png" onclick="completed()" title="Edit" class="disabled">
             </div>
         </div>
     </section>
