@@ -36,12 +36,12 @@ function toggleRegister() {
 
 	if ($btn1.html() == 'Login') {
 		$btn1.html('Register');
-		$btn1.click(register);
+		$btn1.off("click").click(register);
 		$btn2.html('Cancel');
 		$cpw.removeClass("disabled");
 	} else {
 		$btn1.html('Login');
-		$btn1.click(login);
+		$btn1.off("click").click(login);
 		$btn2.html('Register');
 		$cpw.addClass("disabled");
 	}
