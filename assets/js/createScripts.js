@@ -25,6 +25,7 @@ function restart() {
 	actions = [];
 	$("#steps").html('0');
 	layers = 0;
+	ccolour = null;
 	console.log("Restart");
 
 	$("#board span.insert").each(function(idx){
@@ -146,10 +147,19 @@ function upload() {
     });
 }
 
-$( document ).ready(function() {
-	superInit();
+function serversays() {
+	if ($("#serversays").length!=0) {
+		var data = JSON.parse($("#serversays").html());
+		$("#serversays").remove();
+
+		if (data.username && data.verbose) {
+			$($("#nav-pbrief").find("span")[0]).html(data.username);
+			$($("#nav-pbrief").find("span")[1]).html(data.verbose);
+		}
+	}
 }
 
-function back () {
-	
-}
+$( document ).ready(function() {
+	superInit();
+	serversays();
+});

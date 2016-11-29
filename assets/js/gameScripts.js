@@ -1,6 +1,8 @@
 var actions = [];
 var numActions = 0;
 var layers = 0;
+
+// Insert a ribbon when user clicks button. Update meta
 function insert(who, idx) {
 	if (!ccolour) return;
 
@@ -28,6 +30,8 @@ function insert(who, idx) {
 }
 
 var ccolour = null;
+
+// Change the selected colour
 function colour(who) {
 	$("#colours span").each(function(){
 		$(this).removeClass("colour-on");
@@ -40,6 +44,7 @@ function restart() {
 	actions = [];
 	numActions = 0;
 	state = [];
+	ccolour = null;
 	for (let i=0;i<side**2;i++) { state.push([]); }
 	$("#steps").html('0');
 	layers = 0;
@@ -79,10 +84,11 @@ function undo() {
 var board = [];
 var state = [];
 var side = 0;
+
+// Builds the game (board, insert btns, colour stripes) and start game
+// Takes a flattened list of colours. 
+// e.g. build(['red', 'red', 'green', 'orange'])
 function build(clrs) {
-	// Builds the game scene (board, insert btns, colour stripes)
-	// Takes a flattened list of colours. 
-	// e.g. build(['red', 'red', 'green', 'orange'])
 	side = Math.sqrt(clrs.length);
 	if (Math.floor(side) != side) return;
 	board = clrs;
@@ -123,19 +129,21 @@ function build(clrs) {
 }
 
 var state = null;
+
+// Check if current state is goal state. If so end game
 function check() {
-	// Check the state dictionary/list and compare with board
-	// If match, end game
 	if (layers < 2*side) return;  // No holes
-	for (let i=0;i<side**2;i++) { // Compare with board
+	for (let i=0;i<side**2;i++) { // Compare with goal
 		if (state[i][0] != board[i]) return;
 	}
-	console.log("Match solution. Game ended");
+	console.log("Goal reached. Game ended");
 	$("#congrats").removeClass('disabled').find("span").html(''+numActions);
 	$("#lower-mask").removeClass('disabled');
 }
 
 var level = 1;
+
+// Change selected levels in level selection.
 const levelStr = ['Easy', 'Normal', 'Hard', 'Expert'];
 function levelDiff(amount) {
 	if (level+amount > 4 || level+amount<1) return;
@@ -143,30 +151,62 @@ function levelDiff(amount) {
 	$("#level-dialog").find(".spinner").find("span").html(levelStr[level-1]);
 }
 
-var levels = null;
-$( document ).ready(function() {
-	superInit();
+function enterLevel(second) {
+	build(levels[level+'.'+second]);
+	$("#dialogs").addClass("disabled");
+	$("#lower").removeClass("disabled");
+}
+
+// Check if the server delivered additional info, and act accordingly.
+// Mainly insert username and verbose to navigation. If a board
+// is provided, build the game, otherwise ask server for level data.
+function serversays() {
+	if ($("#serversays").length!=0) {
+		var data = JSON.parse($("#serversays").html());
+		$("#serversays").remove();
+
+		if (data.username && data.verbose) {
+			$($("#nav-pbrief").find("span")[0]).html(data.username);
+			$($("#nav-pbrief").find("span")[1]).html(data.verbose);
+		}
+		if (data.board) {
+			build(data.board);
+			return;
+		} 
+	}
+	$("#dialogs").removeClass("disabled");
+	$("#lower").addClass("disabled");
+	getLevels();
+}
+
+// Get all level description from server. Ideally this file is cached. 
+function getLevels() {
 	// $.get('levels.json', function(data) {
 	// 	levels = JSON.parse(data);
 	// });
 	levels = {
-		1.1:["yellow", "yellow", "yellow", "yellow"],
-		1.2:["blue", "blue", "cyan", "cyan"],
-		1.3:["red", "red", "green", "orange"],
-		1.4:["cyan", "violet", "cyan", "cyan"],
-		1.5:["red", "red", "green", "orange"],
-		1.6:["cyan", "violet", "cyan", "cyan"],
-		1.7:["cyan", "violet", "cyan", "violet", "violet", "violet", "cyan", "violet", "cyan"],
-		1.8:["orange", "cyan", "orange", "green", "cyan", "yellow", "yellow", "cyan", "yellow"],
-		1.9:["cyan", "cyan", "blue", "violet", "violet", "violet", "cyan", "violet", "blue"],
-		2.1:["white", "grey", "black", "grey", "grey", "black", "black", "black", "black"],
-		3.1:["orange", "orange", "green", "red", "yellow", "orange", "green", "red", "green", "green", "green", "red", "yellow", "yellow", "green", "yellow"],
-		4.1:["cyan", "blue", "blue", "violet", "blue", "cyan", "cyan", "blue", "cyan", "cyan", "cyan", "cyan", "violet", "blue", "violet", "violet", "blue", "violet", "cyan", "blue", "blue", "violet", "blue", "cyan", "blue", "blue", "blue", "blue", "blue", "blue", "violet", "violet", "violet", "violet", "violet", "violet"]
+		1.1:["yellow","yellow","yellow","yellow"],
+		1.2:["blue","blue","cyan","cyan"],
+		1.3:["red","red","green","orange"],
+		1.4:["cyan","violet","cyan","cyan"],
+		1.5:["red","red","green","orange"],
+		1.6:["cyan","violet","cyan","cyan"],
+		1.7:["cyan","violet","cyan","violet","violet","violet","cyan","violet","cyan"],
+		1.8:["orange","cyan","orange","green","cyan","yellow","yellow","cyan","yellow"],
+		1.9:["cyan","cyan","blue","violet","violet","violet","cyan","violet","blue"],
+		2.1:["white","grey","black","grey","grey","black","black","black","black"],
+		3.1:["orange","orange","green","red","yellow","orange","green","red","green",
+			"green","green","red","yellow","yellow","green","yellow"],
+		4.1:["cyan","blue","blue","violet","blue","cyan","cyan","blue","cyan","cyan",
+			"cyan","cyan","violet","blue","violet","violet","blue","violet","cyan","blue",
+			"blue","violet","blue","cyan","blue","blue","blue","blue","blue","blue","violet",
+			"violet","violet","violet","violet","violet"]
 	}
-});
-
-function enterLevel(second) {
-	$("#dialogs").addClass("disabled");
-	$("#lower").removeClass("disabled");
-	build(levels[level+'.'+second]);
 }
+
+
+var levels = null;
+$( document ).ready(function() {
+	superInit();
+	serversays();
+});

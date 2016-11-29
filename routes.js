@@ -4,6 +4,7 @@
 var express = require('express');
 var router = express.Router();
 var session = require('client-sessions');
+var fs = require('fs');
 
 
 router.use(session({
@@ -14,8 +15,32 @@ router.use(session({
 }));
 
 //Routes
-router.get('/', function(req, res) {
-	res.sendFile('game.html', {'root':__dirname});
+// router.get('/game', function(req, res) {
+// 	res.sendFile('game.html', {'root':__dirname});
+// });
+
+// Sample sending additional info (pattern, username, verbose) along with file
+// http://localhost:3000/game?pid=45
+// Source: http://stackoverflow.com/questions/17634456/using-express-to-send-a-modified-file
+router.get('/game', function(req, res) {
+  var pid = req.query.pid;
+
+  if (!pid) {
+    res.sendFile('game.html', {'root':__dirname});
+  }else {
+    fs.readFile('./game.html', 'utf-8', function(err, data) {
+      if (err) { res.send(404); }
+      else {
+        var pid = req.query.pid;
+        console.log('Sending pattern '+pid);
+        res.contentType('text/html').send(data.replace("<!--serversays-->",
+        "<div id=\"serversays\">"+
+          JSON.stringify({board:['red','red','red','red'],username:'crocodile',verbose:'I am green'})
+          +"</div>"));
+      }
+    });
+  }
+  
 });
 
 
