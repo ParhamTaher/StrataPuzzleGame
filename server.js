@@ -10,6 +10,7 @@ var path = require('path');
 var app = express();
 //Static CSS file
 app.use(express.static(__dirname + '/assets/css'));
+app.use(express.static(__dirname + '/assets/img'));
 app.use(express.static(__dirname + '/'));
 
 
