@@ -25,7 +25,7 @@ function restart() {
 	actions = [];
 	$("#steps").html('0');
 	layers = 0;
-	cosole.log("Restart");
+	console.log("Restart");
 
 	$("#board span.insert").each(function(idx){
 		$(this).attr("class", "insert").next().removeClass('ribbon-on');
@@ -52,6 +52,9 @@ var side = 2;
 function build() {
 	// Builds the empty game scene (board, insert btns, colour stripes)
 	// Takes a flattened list of colours. 
+	actions = [];
+	$("#steps").html('0');
+	layers = 0;
 	$("#board").attr("class", "board-"+side);
 	$("#dialogs").addClass("disabled");
 	$("#lower").removeClass('disabled');
@@ -141,4 +144,12 @@ function upload() {
         	// noti(r.responseText+". Please try again.", "red");
         }
     });
+}
+
+$( document ).ready(function() {
+	superInit();
+}
+
+function back () {
+	
 }

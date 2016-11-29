@@ -39,9 +39,11 @@
         <div id="dialogs">
             <div id="size-dialog">
                 <p>Select Board Size</p>
-                <img onclick="sizePattern(-1)" src="./assets/img/arrow.png">
-                <span>2 x 2</span>
-                <img onclick="sizePattern(1)" src="./assets/img/arrow.png"><br><br>
+                <div class="spinner">
+                    <img onclick="sizePattern(-1)" src="./assets/img/arrow.png">
+                    <span>2 x 2</span>
+                    <img onclick="sizePattern(1)" src="./assets/img/arrow.png">
+                </div><br><br>
                 <img src="./assets/img/check.png" onclick="build()">
             </div>
         </div>
