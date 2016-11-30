@@ -60,7 +60,8 @@ span.insert::after,
 nav, nav>a, nav>div,
 .ribbons, 
 .spinner > img,
-#levels>div { transition: 0.3s; }
+#levels>div,
+#name-dialog > input { transition: 0.3s; }
 
 .noti {
     transition: height 2s;
@@ -160,7 +161,6 @@ nav > a {
 	width: 100%;
 	position: absolute;
 	z-index: 5;
-	height: 80px;
 	padding: 20px 0;
 	text-align: center;
 }
@@ -332,9 +332,10 @@ div.ribbon {
 	bottom: 0;
 	width: 100%;
 	text-align: center;
+	padding-bottom: 20px;
 }
 
-h3 { text-align: center; }
+#lower h3 { text-align: center; }
 
 #colours {
 	font-size: 0;

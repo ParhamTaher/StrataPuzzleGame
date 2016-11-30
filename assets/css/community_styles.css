@@ -1,0 +1,122 @@
+#header { 
+	border-bottom: 4px solid #968A72; 
+	position:fixed;
+	background-color: #D5CEBC;
+	box-shadow: 0 0px 10px grey;
+}
+
+#search { padding: 145px 5vw 30px; position: relative;}
+
+	#search-bar {
+		width: 100%;
+	    font-size: 36px;
+	    background-color: transparent;
+	    color: #968A72;
+	    border: none;
+	    padding: 20px 5px;
+	    border-bottom: 4px solid #968A72;
+	}
+	#search-btn {
+		width: 20vw;
+	    max-width: 80px;
+	    cursor: pointer;
+	    transition: opacity 0.3s;
+	    margin: 35px 5vw;
+	    position: absolute;
+	    right: 0;
+	    bottom: 0;
+	}
+	#search-btn:hover { opacity: 0.7; }
+
+.showroom h3,
+.showroom2 h3 { 
+	font-size: 26px; 
+	margin: 20px 0 15px 5vw;
+}
+
+	.showroom > div {
+		border-top: 4px solid #968A72;
+		border-bottom: 4px solid #968A72;
+		background-color: #c7bea8;
+		font-size: 0;
+	    overflow-x: auto;
+	    overflow-y: hidden;
+	    white-space: nowrap;
+	}
+
+	.showroom a,
+	.showroom2 a {
+		text-decoration: none;
+		transition: 0.3s;
+		cursor: pointer;
+    	color: #968A72;
+	}
+
+	.showroom a {
+		display: inline-block;
+		border-right: 1px solid #968A72;
+		padding: 25px 20px;
+		width: 320px;
+	}
+
+	.showroom a:hover,
+	.showroom2 a:hover {
+		background-color: #968A72;
+		color: white;
+	}
+
+	.showroom img,
+	.showroom2 img {
+		width: 100px;
+		height: 100px;
+		vertical-align: middle;
+		transform: rotate(-45deg) scale(0.7, 0.7);
+		border: 5px solid #968A72;
+	}
+
+	.pattern-desc {
+		display: inline-block;
+		vertical-align: middle;
+		font-size: 20px;
+		padding-left: 15px;
+		max-width: 160px;
+		white-space: initial;
+	}
+
+	.pattern-desc > h4 {
+		margin: 0 0 10px 0;
+		font-size: 22px;
+	}
+
+	.pattern-desc > span {
+		display: block;
+		margin: 0 0 3px 0;
+		font-size: 18px;
+	}
+
+	.showroom2 > div {
+		border-top: 4px solid #968A72;
+		border-bottom: 4px solid #968A72;
+		background-color: #c7bea8;
+	}
+
+	.showroom2 a {
+		display: block;
+		padding: 8px 30px;
+		border-bottom: 1px solid #968A72;
+	}
+
+	.showroom2 img {
+		width: 70px;
+		height: 70px;
+	}
+
+	.showroom2 .user-icon {
+		-webkit-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+		clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+		transform: none;
+		border: none;
+	}
+
+	.showroom2 .pattern-desc { max-width: calc(100% - 150px); }
+	.showroom2 h4 { margin: 0; }

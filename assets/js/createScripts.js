@@ -132,19 +132,35 @@ function sizePattern (amount) {
 }
 
 function upload() {
+	$name = $("#name-dialog").find("input");
+	if (!$name.html()) {
+		$name.css('background-color', '#c63d44');
+		setTimeout(function(){ $name.css('background-color', 'transparent') }, 2000);
+		return;
+	}
     $.post({
         url: "/newpattern",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
-        data: JSON.stringify( {board: board, name:$("#name-dialog").find("input").html()} ),
+        data: JSON.stringify( {board: board, name:$name.html()} ),
         success: function(r) {
-            // noti("Register Success.", "green");
-            setTimeout(function(){window.location.href = "./community";}, 500);
+            congrats(true, 'Upload successful');
+            $("#buttons").find("img[title=Upload]").addClass('disabled');
+            $("#buttons").find("img[title=Edit]").addClass('disabled');
+            $("#name-dialog").find("p").addClass("disabled");
+            $name.css("border", "none").prop('disabled', true);
         },
         error: function (r) {
-        	// noti(r.responseText+". Please try again.", "red");
+        	congrats(false, r.responseText+". Please try again.");
         }
     });
+}
+
+function congrats(foreal, text) {
+	$("#congrats").removeClass("disabled")
+	.find("img").attr("src", "./assets/img/"+(foreal?"check":"cross")+".png")
+	.next().html(text);
+	setTimeout(function(){ $("#congrats").addClass("disabled"); }, 3000);
 }
 
 function serversays() {
