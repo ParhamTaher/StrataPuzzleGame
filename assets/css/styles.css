@@ -161,7 +161,6 @@ nav > a {
 	width: 100%;
 	position: absolute;
 	z-index: 5;
-	height: 80px;
 	padding: 20px 0;
 	text-align: center;
 }
@@ -336,7 +335,7 @@ div.ribbon {
 	padding-bottom: 20px;
 }
 
-h3 { text-align: center; }
+#lower h3 { text-align: center; }
 
 #colours {
 	font-size: 0;
