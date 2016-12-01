@@ -1,3 +1,4 @@
+a { color: #968A72; text-decoration: none; }
 #header { 
 	border-bottom: 4px solid #968A72; 
 	position:fixed;
@@ -5,7 +6,7 @@
 	box-shadow: 0 0px 10px grey;
 }
 
-#search { padding: 145px 5vw 30px; position: relative;}
+#search{ padding: 145px 5vw 30px; position: relative;}
 
 	#search-bar {
 		width: 100%;
@@ -120,3 +121,64 @@
 
 	.showroom2 .pattern-desc { max-width: calc(100% - 150px); }
 	.showroom2 h4 { margin: 0; }
+
+
+#desc { text-align: center; padding: 165px 5vw 50px; }
+
+	#desc img {
+		width: 30vw;
+		height: 30vw; 
+		max-width: 200px;
+		max-height: 200px;
+		vertical-align: middle;
+			transform: rotate(-45deg) scale(0.7, 0.7);
+			border: 5px solid #968A72;
+	}
+
+	#desc .pattern-desc {
+		width: initial;
+		max-width: 60vw;
+		min-width: 400px;
+		text-align: left;
+		margin: 20px 0;
+	}
+
+	#desc h4 { font-size: 34px; }
+
+	#desc span { font-size: 26px; }
+
+#action { 
+	font-size: 0; 
+	text-align: center;
+	border-top: 2px solid #968A72;
+	border-bottom: 2px solid #968A72;
+}
+
+	#action a {
+		display: inline-block;
+		width: 50%;
+		max-width: 400px;
+		font-size: 32px;
+		cursor: pointer;
+	}
+	#action a:hover {
+		background-color: #968A72;
+		color:white;
+	}
+
+	#action a > * { vertical-align: middle; }
+
+	#action a > div {
+		display: inline-block;
+		width: 20vw;
+		height: 20vw; 
+		max-width: 120px;
+		max-height: 120px;
+		background-size: contain;
+		margin-left: -7%;
+	}
+
+	#try>div { background-image: url("../img/play.png"); }
+	#like>div { background-image: url("../img/like.png"); }
+	#action a:hover #try>div { background-image: url("../img/play_w.png"); }
+	#action a:hover #like>div { background-image: url("../img/like_w.png"); }
