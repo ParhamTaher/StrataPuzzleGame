@@ -91,6 +91,7 @@ function addUser() {
 }
 
 function searchEntries() {
+	// Offline search since we have all data already. Examines all tr's.
 	var keyword = $("#search-bar").val().toUpperCase();
 	$("tbody tr").each(function(idx, val) {
 		if (keyword && $(val).html().toUpperCase().indexOf(keyword)<0) {
