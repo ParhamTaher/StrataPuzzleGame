@@ -133,7 +133,7 @@ function sizePattern (amount) {
 
 function upload() {
 	$name = $("#name-dialog").find("input");
-	if (!$name.html()) {
+	if (!$name.val()) {
 		$name.css('background-color', '#c63d44');
 		setTimeout(function(){ $name.css('background-color', 'transparent') }, 2000);
 		return;
