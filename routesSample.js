@@ -64,3 +64,37 @@ router.post('/search', function(req, res) {
 
     )
 });
+
+router.get('/admin', function(req, res) {
+  fs.readFile('./admin.html', 'utf-8', function(err, data) {
+    if (err) { res.send(404); }
+    else {
+      res.contentType('text/html').send(data.replace("<!--serversays-->",
+      "<div id=\"serversays\">"+
+
+      JSON.stringify({
+        username:'username',
+        verbose: 'verbose',
+        users: [
+          {
+            username:'username',
+            desc: 'description',
+            src: 'avatar.png',
+          }
+        ],
+        patterns: [
+          {
+            pid:1,
+            name: 'pattern name',
+            author: 'author',
+            src: 'patterndefault.png',
+            time: 'timeuploaded',
+            likes: 5
+          }
+        ]
+      })
+
+      +"</div>"));
+    }
+  });
+});

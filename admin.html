@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Strata | Admin</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/admin_styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/scripts.js"></script>
+    <script type="text/javascript" src="assets/js/adminScripts.js"></script>
+</head>
+<body>
+    <section id="header">
+        <h3>Strata Admin</h3>
+        <div id="search">
+            <input type="text" id="search-bar" placeholder="Search Pattern or User">
+            <img src="./assets/img/search.png" id="search-btn" title="search">
+        </div>
+        <a href="./profile"><img class="avatar" src="./assets/img/avatar.png"><span id="admin-un">username</span></a>
+    </section>
+    <section id="new-user">
+        <h3>Add New User</h3>
+        <table>
+            <tr>
+                <td><img src="./assets/img/avatar.png" class="avatar"></td>
+                <td><input type="text" id="new-un" placeholder="Username"></td>
+                <td><input type="text" id="new-pw" placeholder="Password"></td>
+                <td></td>
+                <td><img src="./assets/img/check.png" id="add-user"></td>
+            </tr>
+        </table>
+    </section>
+    <section id="users">
+        <h3>All Users</h3>
+        <table>
+            <thead>
+                <tr>
+                    <td>Avatar</td>
+                    <td>Username</td>
+                    <td>Password</td>
+                    <td>Description</td>
+                    <td>More</td>
+                    <td>Remove</td>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </section>
+    <section id="patterns">
+        <h3>All Patterns</h3>
+        <table>
+            <thead>
+                <tr>
+                    <td>Icon</td>
+                    <td>Name</td>
+                    <td>Author</td>
+                    <td>Time Posted</td>
+                    <td>Likes</td>
+                    <td>Remove</td>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </section>
+    <!--serversays-->
+    <div id="serversays">{"username":"username","verbose":"verbose","users":[{"username":"username","desc":"description","src":"avatar.png"}],"patterns":[{"pid":1,"name":"pattern name","author":"author","src":"patterndefault.png","time":"timeuploaded","likes":5}]}</div>
+
+</body>
+</html>

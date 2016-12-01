@@ -25,7 +25,7 @@ function serversays() {
 }
 
 function like(pid) {
-		$.post({
+	$.post({
         url: "/toggleLike",
         dataType: "json",
         contentType: "application/json; charset=utf-8",

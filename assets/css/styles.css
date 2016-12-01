@@ -12,6 +12,8 @@ html > body {
 	font-size: 20px; 
 }
 
+a { color: #968A72; text-decoration: none; }
+
 .disabled { display: none !important; }
 .hidden {opacity: 0; }
 .fade {opacity: 0.3; }
