@@ -14,7 +14,7 @@ function serversays() {
 		}
 		if (data.pattern) {
 			var p = data.pattern;
-			$("#desc").find("img").attr("src", p.src);
+			$("#desc").find("img").attr("src", "./assets/img/"+p.src);
 			$("#desc").find("div.pattern-desc").find("h4").html(p.name)
 				.next().html("Author: "+p.author).next().html("Posted: "+p.time);
 			$("#try").attr("href", "./game?pid="+p.pid);
