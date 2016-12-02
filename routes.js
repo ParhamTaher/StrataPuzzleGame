@@ -35,9 +35,9 @@ router.get('/profile', function(req, res) {
 	if (!req.session.user) {
     	res.sendFile('mode.html', {'root':__dirname});
   	} else {
-    	res.redirect('/');
+    	res.sendFile('profile.html', {'root':__dirname});
   	}
-	
+
 });
 
 
@@ -62,7 +62,7 @@ router.get('/userinfo', function(req, res) {
 
 router.post('/register', function(req, res) {
 	console.log("Registering " + req.body.username);
-	
+
 	connection.connect(function(err) {
   	if (err) throw err
   		console.log('Connected to DB!');
