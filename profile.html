@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>User Profile</title>
+  <link rel="stylesheet" type="text/css" media="all" href="assets/css/profile_styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script type="text/javascript" src="assets/js/profile.js"></script>
+</head>
+
+<body>
+  <div id="topbar">
+  <a href="./game">Back to Game</a>
+  </div>
+
+  <div id="w">
+    <div id="content" class="clearfix">
+      <div id="userphoto"><img src="assets/img/avatar.png" alt="default avatar"></div>
+      <h1>Username</h1>
+
+      <nav id="profiletabs">
+        <ul class="clearfix">
+          <li><a href="#bio" class="sel">Description</a></li>
+          <li><a href="#patterns">Patterns</a></li>
+          <li><a href="#settings">Settings</a></li>
+        </ul>
+      </nav>
+
+      <section id="bio">
+
+      </section>
+
+      <section id="patterns" class="hidden">
+        <p>Most recent Patterns:</p>
+
+      </section>
+
+      <section id="settings" class="hidden">
+        <p>Edit your user settings:</p>
+        <p>
+
+
+        </p>
+
+        <p class="setting"><span>E-mail Address </span> <input type="text" name="email" value="email" id="email" placeholder="email"></p>
+
+        <p class="setting"><span>Change Password</span> <input type="button" name="Change" value="Change"></p>
+      </section>
+    </div><!-- @end #content -->
+  </div><!-- @end #w -->
+</body>
+</html>
