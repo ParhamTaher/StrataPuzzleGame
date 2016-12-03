@@ -22,7 +22,7 @@ function login(){
         data: user_info,
         success: function() {
             noti("Login Success.", "green");
-            setTimeout(function(){window.location.href = "./game";}, 500);
+            setTimeout(function(){window.location.href = "./community";}, 500);
         },
         error: function(callBack) {
             noti(r.responseText+". Please try again.", "red");

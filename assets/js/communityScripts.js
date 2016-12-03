@@ -97,3 +97,25 @@ function search() {
         }
     });
 }
+
+
+function getuserinfo() {
+	console.log("Inside getuserinfo");
+	$.get('/userinfo', function(data){
+		console.log(data);
+		if (data) {
+			if (data.username && data.verbose) {
+				$($("#nav-pbrief").find("span")[0]).html(data.username);
+				$($("#nav-pbrief").find("span")[1]).html(data.verbose);
+			}
+		}
+
+	});
+}
+
+
+$( document ).ready(function() {
+	//superInit();
+	//serversays();
+	getuserinfo();
+});

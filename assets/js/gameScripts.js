@@ -204,8 +204,14 @@ function getLevels() {
 	}
 }
 
+
+
 function getuserinfo() {
 	console.log("Inside getuserinfo");
+	$("#dialogs").removeClass("disabled");
+	$("#lower").addClass("disabled");
+	console.log("Single player offline");
+	getLevels();
 	$.get('/userinfo', function(data){
 		console.log(data);
 		if (data) {
@@ -216,14 +222,15 @@ function getuserinfo() {
 			if (data.board) {
 				build(data.board);
 				return;
-			} 
+			}
 		}
-		$("#dialogs").removeClass("disabled");
-		$("#lower").addClass("disabled");
-		getLevels();
+
 
 	});
 }
+
+
+
 
 
 var levels = null;
@@ -231,4 +238,9 @@ $( document ).ready(function() {
 	superInit();
 	//serversays();
 	getuserinfo();
+	$( "#single-btn" ).click(function() {
+  		$("#dialogs").removeClass("disabled");
+		$("#lower").addClass("disabled");
+		getLevels();
+	});
 });
