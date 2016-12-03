@@ -35,7 +35,7 @@ router.get('/profile', function(req, res) {
 	if (!req.session.user) {
     	res.sendFile('mode.html', {'root':__dirname});
   	} else {
-    	res.redirect('/');
+    	res.sendFile('profile.html', {'root':__dirname});
   	}
 	
 });
@@ -52,12 +52,45 @@ router.get('/game', function(req, res) {
 	res.sendFile('game.html', {'root':__dirname});
 });
 
+router.get('/community', function(req, res) {
+  if(req.session && req.session.user) {
+    res.sendFile('community.html', {'root':__dirname});
+  } else {
+    res.sendFile('mode.html', {'root':__dirname});
+  }
+});
+
+router.get('/single', function(req, res) {
+	res.sendFile('game.html', {'root':__dirname});
+	//res.redirect('/userinfo?single=clicked');
+});
+
 router.get('/userinfo', function(req, res) {
 	if(req.session && req.session.user) {
 		console.log(req.session.user.username);
 		res.send({board:['red','red','red','red'],username:req.session.user.username,verbose:'I am green'});
 	}
 });
+
+router.post('/search', function(req, res) {
+	console.log("Searching for "+req.body.keyword);
+	res.send({
+        patterns: [
+          {
+            pid:1,
+            name: 'myPattern',
+            src: 'patterndefault.png',
+          }
+        ],
+        users: [
+          {
+            username:'un',
+            src: 'avatar.png',  // pattern icon filename, e.g.'un.png'
+          }
+        ]
+      })
+});
+
 
 
 router.post('/register', function(req, res) {
@@ -97,6 +130,23 @@ router.post('/register', function(req, res) {
 	});
 	*/
 
+});
+router.get('/create', function(req, res) {
+	res.sendFile('create.html', {'root':__dirname});
+});
+
+
+router.post('/newpattern', function(req, res) {
+	console.log(req.body);
+
+	//
+
+	res.send("Pattern Saved!");
+});
+
+
+router.get('/about', function(req, res) {
+	res.sendFile('about.html', {'root':__dirname});
 });
 
 
