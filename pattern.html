@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Strata | Community</title>
+    <title>Strata | Pattern</title>
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/community_styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="assets/js/scripts.js"></script>
-    <script type="text/javascript" src="assets/js/communityScripts.js"></script>
+    <script type="text/javascript" src="assets/js/patternScripts.js"></script>
 </head>
 <body>
 
@@ -31,32 +31,22 @@
         <img id="back" src="./assets/img/back.png" title="Back">
         <img id="menu" src="./assets/img/menu.png" title="Menu">
     </section>
-
-    <section id="search">
-        <input type="text" id="search-bar" placeholder="Search Pattern or User">
-        <img src="./assets/img/search.png" id="search-btn" title="search">
+    <section id="desc">
+        <img src="./assets/img/patterndefault.png">
+        <div class="pattern-desc">
+            <h4>Pattern Name</h4>
+            <span>Author: </span>
+            <span>Posted: </span>
+        </div>
     </section>
-    <section id="recently-added" class="showroom disabled">
-        <h3>Recently Added</h3>
-        <div></div>
+    <section id="action">
+        <a id="try"><div></div><span>Try</span></a>
+        <a id="like"><div></div><span>Like 5</span></a>
     </section>
-    <section id="most-liked" class="showroom disabled">
-        <h3>Most Liked</h3>
-        <div></div>
-    </section>
-    <section id="all-patterns" class="showroom2 disabled">
-        <h3>All Patterns</h3>
-        <div></div>
-    </section>
-    <section id="search-patterns" class="showroom2 searchresult disabled">
-        <h3>Search Result (Patterns)</h3>
-        <div></div>
-    </section>
-    <section id="search-users" class="showroom2 searchresult disabled">
-        <h3>Search Result (Users)</h3>
-        <div></div>
-    </section>
+    <section id="comments" class="disabled"></section>
+    <section id="addComments" class="disabled"></section>
     <!--serversays-->
+    <div id="serversays">{"username":"username","verbose":"verbose","pattern":{"pid":1,"name":"pattern name","author":"author","src":"patterndefault.png","time":"timeuploaded","likes":5,"liked":false}}</div>
 
 </body>
 </html>

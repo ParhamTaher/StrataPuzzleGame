@@ -14,11 +14,28 @@ function login(){
 		return;
 	}
 
+	var user_info = { username: $un, password: $pw };
+
+	$.ajax({
+        type: 'POST',
+        url: '/login',
+        data: user_info,
+        success: function() {
+            noti("Login Success.", "green");
+            setTimeout(function(){window.location.href = "./community";}, 500);
+        },
+        error: function(callBack) {
+            noti(r.responseText+". Please try again.", "red");
+        }
+    });
+
+
+	/*
     $.post({
         url: "/login",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
-        data: JSON.stringify( { username: $un, password: $pw } ),
+        data: user_info,
         success: function(r) {
             noti("Login Success.", "green");
             setTimeout(function(){window.location.href = "./community";}, 500);
@@ -27,6 +44,7 @@ function login(){
         	noti(r.responseText+". Please try again.", "red");
         }
     });
+    */
 }
 
 function toggleRegister() {

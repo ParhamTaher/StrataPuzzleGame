@@ -1,0 +1,13 @@
+h3 { font-size: 34px;text-align: center; }
+nav { 
+	transform: none; 
+	border: none; 
+	box-shadow: none;
+	height: initial;
+	margin: auto;
+	position: relative;
+}
+
+nav > a {
+	border: none;
+}
