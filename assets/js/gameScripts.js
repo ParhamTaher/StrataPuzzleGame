@@ -208,12 +208,12 @@ function getLevels() {
 
 function getuserinfo() {
 	console.log("Inside getuserinfo");
-	$("#dialogs").removeClass("disabled");
-	$("#lower").addClass("disabled");
+	//$("#dialogs").removeClass("disabled");
+	//$("#lower").addClass("disabled");
 	console.log("Single player offline");
-	getLevels();
+	//getLevels();
 	$.get('/userinfo', function(data){
-		console.log(data);
+		console.log(data + " gamescript");
 		if (data) {
 			if (data.username && data.verbose) {
 				$($("#nav-pbrief").find("span")[0]).html(data.username);
@@ -221,8 +221,11 @@ function getuserinfo() {
 			}
 			if (data.board) {
 				build(data.board);
+				$("#dialogs").addClass("disabled");
+				$("#lower").removeClass("disabled");
 				return;
 			}
+			
 		}
 
 
