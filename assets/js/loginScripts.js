@@ -20,31 +20,17 @@ function login(){
         type: 'POST',
         url: '/login',
         data: user_info,
-        success: function(callBack) {
-            noti(callBack, "green");
-            setTimeout(function(){window.location.href = "./community";}, 500);
-        },
-        error: function(callBack) {
-            noti(r.responseText+". Please try again.", "red");
-        }
-    });
-
-
-	/*
-    $.post({
-        url: "/login",
-        dataType: "json",
-        contentType: "application/json; charset=utf-8",
-        data: user_info,
         success: function(r) {
-            noti("Login Success.", "green");
-            setTimeout(function(){window.location.href = "./community";}, 500);
-        },
-        error: function (r) {
-        	noti(r.responseText+". Please try again.", "red");
+        	var msg = JSON.parse(r).msg;
+        	if (JSON.parse(r).success) {
+        		noti(msg, "green");
+            	setTimeout(function(){window.location.href = "./community";}, 500);
+        	}
+        	else {
+        		noti(msg, "red");
+        	}
         }
     });
-    */
 }
 
 function toggleRegister() {
@@ -84,30 +70,17 @@ function register() {
         type: 'POST',
         url: '/register',
         data: {	username: $un, password: $pw },
-        success: function() {
-            noti("Login Success.", "green");
-            setTimeout(function(){window.location.href = "./community";}, 500);
-        },
-        error: function(callBack) {
-            noti(r.responseText+". Please try again.", "red");
-        }
-    });
-
-	/*
-    $.post({
-        url: "/register",
-        dataType: "json",
-        contentType: "application/json; charset=utf-8",
-        data: JSON.stringify( {	username: $un, password: $pw } ),
         success: function(r) {
-            noti("Register Success.", "green");
-            setTimeout(function(){window.location.href = "./community";}, 500);
-        },
-        error: function (r) {
-        	noti(r.responseText+". Please try again.", "red");
+        	var msg = JSON.parse(r).msg;
+        	if (JSON.parse(r).success) {
+        		noti(msg, "green");
+            	setTimeout(function(){window.location.href = "./community";}, 500);
+        	}
+        	else {
+        		noti(msg, "red");
+        	}
         }
     });
-    */
 }
 
 // This function is adapted from my old work. Jack

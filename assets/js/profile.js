@@ -30,4 +30,14 @@ function getuserinfo() {
 
 $( document ).ready(function() {
   getuserinfo();
+  $("#logout").click(logout);
 });
+
+function logout () {
+    $.get({
+        url: '/logout',
+        success: function(r) {
+          window.location.href="mode.html";
+        }
+    });
+}
