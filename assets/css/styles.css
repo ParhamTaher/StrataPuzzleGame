@@ -166,6 +166,7 @@ nav > a {
 		position: absolute;
 		left: 0;
 		font-size: 18px;
+		bottom: 0;
 	}
 	#nav-profile:hover .verbose { opacity: 0; }
 	#nav-profile:hover .more { opacity: 1; }

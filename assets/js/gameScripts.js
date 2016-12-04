@@ -160,75 +160,20 @@ function enterLevel(second) {
 // Check if the server delivered additional info, and act accordingly.
 // Mainly insert username and verbose to navigation. If a board
 // is provided, build the game, otherwise ask server for level data.
-function serversays() {
-	if ($("#serversays").length!=0) {
-		var data = JSON.parse($("#serversays").html());
-		$("#serversays").remove();
-
-		if (data.username && data.verbose) {
-			$($("#nav-pbrief").find("span")[0]).html(data.username);
-			$($("#nav-pbrief").find("span")[1]).html(data.verbose);
+function getGameinfo() {
+		$.get('/gameData', function(r){
+			var data = JSON.parse(r);
+		if (data.success && data.msg) {
+			// Online pattern supplied
+			build(JSON.parse(data.msg));
+		} else {
+			// Single player
+	  		$("#dialogs").removeClass("disabled");
+			$("#lower").addClass("disabled");
+			$.get('levels.json', function(data) {
+				levels = data;
+			});
 		}
-		if (data.board) {
-			build(data.board);
-			return;
-		} 
-	}
-	$("#dialogs").removeClass("disabled");
-	$("#lower").addClass("disabled");
-	getLevels();
-}
-
-// Get all level description from server. Ideally this file is cached. 
-function getLevels() {
-	// $.get('levels.json', function(data) {
-	// 	levels = JSON.parse(data);
-	// });
-	levels = {
-		1.1:["yellow","yellow","yellow","yellow"],
-		1.2:["blue","blue","cyan","cyan"],
-		1.3:["red","red","green","orange"],
-		1.4:["cyan","violet","cyan","cyan"],
-		1.5:["red","red","green","orange"],
-		1.6:["cyan","violet","cyan","cyan"],
-		1.7:["cyan","violet","cyan","violet","violet","violet","cyan","violet","cyan"],
-		1.8:["orange","cyan","orange","green","cyan","yellow","yellow","cyan","yellow"],
-		1.9:["cyan","cyan","blue","violet","violet","violet","cyan","violet","blue"],
-		2.1:["white","grey","black","grey","grey","black","black","black","black"],
-		3.1:["orange","orange","green","red","yellow","orange","green","red","green",
-			"green","green","red","yellow","yellow","green","yellow"],
-		4.1:["cyan","blue","blue","violet","blue","cyan","cyan","blue","cyan","cyan",
-			"cyan","cyan","violet","blue","violet","violet","blue","violet","cyan","blue",
-			"blue","violet","blue","cyan","blue","blue","blue","blue","blue","blue","violet",
-			"violet","violet","violet","violet","violet"]
-	}
-}
-
-
-
-function getuserinfo() {
-	console.log("Inside getuserinfo");
-	//$("#dialogs").removeClass("disabled");
-	//$("#lower").addClass("disabled");
-	console.log("Single player offline");
-	//getLevels();
-	$.get('/userinfo', function(data){
-		console.log(data + " gamescript");
-		if (data) {
-			if (data.username && data.verbose) {
-				$($("#nav-pbrief").find("span")[0]).html(data.username);
-				$($("#nav-pbrief").find("span")[1]).html(data.verbose);
-			}
-			if (data.board) {
-				build(data.board);
-				$("#dialogs").addClass("disabled");
-				$("#lower").removeClass("disabled");
-				return;
-			}
-			
-		}
-
-
 	});
 }
 
@@ -239,11 +184,6 @@ function getuserinfo() {
 var levels = null;
 $( document ).ready(function() {
 	superInit();
-	//serversays();
 	getuserinfo();
-	$( "#single-btn" ).click(function() {
-  		$("#dialogs").removeClass("disabled");
-		$("#lower").addClass("disabled");
-		getLevels();
-	});
+	getGameinfo();
 });

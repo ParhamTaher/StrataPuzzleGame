@@ -143,7 +143,7 @@ function upload() {
 	$.ajax({
         type: 'POST',
         url: '/newpattern',
-        data: {board: board, name:$name.html()},
+        data: {board: board, name:$name.val()},
         success: function(r) {
             congrats(true, 'Upload successful');
             $("#buttons").find("img[title=Upload]").addClass('disabled');
@@ -155,24 +155,6 @@ function upload() {
             congrats(false, r.responseText+". Please try again.");
         }
     });
-	/*
-	console.log($name.html());
-    $.post({
-        url: "/newpattern",
-        dataType: "JSON",
-        data: {board: board, name:$name.html()},
-        success: function(r) {
-            congrats(true, 'Upload successful');
-            $("#buttons").find("img[title=Upload]").addClass('disabled');
-            $("#buttons").find("img[title=Edit]").addClass('disabled');
-            $("#name-dialog").find("p").addClass("disabled");
-            $name.css("border", "none").prop('disabled', true);
-        },
-        error: function (r) {
-        	congrats(false, r.responseText+". Please try again.");
-        }
-    });
-    */
 }
 
 function congrats(foreal, text) {
