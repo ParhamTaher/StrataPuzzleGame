@@ -20,8 +20,8 @@ function login(){
         type: 'POST',
         url: '/login',
         data: user_info,
-        success: function() {
-            noti("Login Success.", "green");
+        success: function(callBack) {
+            noti(callBack, "green");
             setTimeout(function(){window.location.href = "./community";}, 500);
         },
         error: function(callBack) {
@@ -80,6 +80,20 @@ function register() {
 		return;
 	}
 
+	$.ajax({
+        type: 'POST',
+        url: '/register',
+        data: {	username: $un, password: $pw },
+        success: function() {
+            noti("Login Success.", "green");
+            setTimeout(function(){window.location.href = "./community";}, 500);
+        },
+        error: function(callBack) {
+            noti(r.responseText+". Please try again.", "red");
+        }
+    });
+
+	/*
     $.post({
         url: "/register",
         dataType: "json",
@@ -93,6 +107,7 @@ function register() {
         	noti(r.responseText+". Please try again.", "red");
         }
     });
+    */
 }
 
 // This function is adapted from my old work. Jack
