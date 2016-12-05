@@ -146,6 +146,48 @@ router.get('/profile', function(req, res) {
 
 });
 
+router.post('/changepass', function(req, res) {
+  console.log(req.body.Password);
+  console.log(req.session.user);
+  if(req.session && req.session.user) {
+    connection.query("UPDATE User SET Password=? WHERE Username=?", [req.body.Password, req.session.user], function(err, rows, fields) {
+      if (!err) {
+        console.log("Password Changed");
+      } else {
+        console.log("Error Changing password");
+      }
+    });
+  }
+});
+
+router.post('/updateemail', function(req, res) {
+  console.log(req.body.Email);
+  console.log(req.session.user);
+  if(req.session && req.session.user) {
+    connection.query("UPDATE User SET Email=? WHERE Username=?", [req.body.Email, req.session.user], function(err, rows, fields) {
+      if (!err) {
+        console.log("Email Changed");
+      } else {
+        console.log("Error Changing email");
+      }
+    });
+  }
+});
+
+router.post('/updatedescription', function(req, res) {
+  console.log(req.body.Description);
+  console.log(req.session.user);
+  if(req.session && req.session.user) {
+    connection.query("UPDATE User SET Description=? WHERE Username=?", [req.body.Description, req.session.user], function(err, rows, fields) {
+      if (!err) {
+        console.log("Description Changed");
+      } else {
+        console.log("Error Changing Description");
+      }
+    });
+  }
+});
+
 //################################################################
 //######################### Game related #########################
 //################################################################

@@ -28,7 +28,8 @@
       </nav>
 
       <section id="bio">
-
+        <textarea id="description" rows="4" cols="50"></textarea>
+        <button id=updateDescription type="button">Update Description</button>
       </section>
 
       <section id="patterns" class="hidden">
@@ -43,9 +44,9 @@
 
         </p>
 
-        <p class="setting"><span>E-mail Address </span> <input type="text" name="email" value="email" id="email" placeholder="email"></p>
+        <p class="setting"><span>E-mail Address </span> <input id="updateEmail" type="button" name="ChangeEmail" value="ChangeEmail"><input id="newEmail" type="text" name="email" value="email" id="email" placeholder="email"></p>
 
-        <p class="setting"><span>Change Password</span> <input type="button" name="Change" value="Change"></p>
+        <p class="setting"><span>Change Password</span> <input id="changePass" type="button" name="Change" value="Change"><input id="newPass" type="password" name="changePass"></p>
       </section>
       <button id="logout">Log out</button>
     </div><!-- @end #content -->

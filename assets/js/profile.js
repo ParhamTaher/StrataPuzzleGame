@@ -27,9 +27,60 @@ function getuserinfo() {
   });
 }
 
+function changePassword() {
+  var pass = {Password: $("#newPass").val()};
+  console.log(pass);
+  $.ajax({
+        type: 'POST',
+        url: '/changepass',
+        data: pass,
+        success: function(callBack) {
+            console.log(callBack);
+        },
+        error: function(callBack) {
+            console.log(callBack);
+        }
+    });
+}
+
+function updateEmail() {
+  var email = {Email: $("#newEmail").val()};
+  console.log(email);
+  $.ajax({
+        type: 'POST',
+        url: '/updateemail',
+        data: email,
+        success: function(callBack) {
+            console.log(callBack);
+        },
+        error: function(callBack) {
+            console.log(callBack);
+        }
+    });
+}
+
+function updateDescription() {
+  var desc = {Description: $("#description").val()};
+  console.log(desc);
+  $.ajax({
+        type: 'POST',
+        url: '/updatedescription',
+        data: desc,
+        success: function(callBack) {
+            console.log(callBack);
+        },
+        error: function(callBack) {
+            console.log(callBack);
+        }
+    });
+}
+
 
 $( document ).ready(function() {
   getuserinfo();
+  $("#changePass").click(changePassword);
+  $("#updateEmail").click(updateEmail);
+  $("#updateDescription").click(updateDescription);
   $("#logout").click(logout);
 });
 
